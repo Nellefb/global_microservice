@@ -5,7 +5,7 @@ using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var redis = ConnectionMultiplexer.Connect("localhost:6379");
+ConnectionMultiplexer redis = ConnectionMultiplexer.Connect("localhost:6379,abortConnect=false");
 builder.Services.AddSingleton<IConnectionMultiplexer>(redis);    
 
 var dbConfig = new DatabaseConfig("mongodb://localhost:27017", "consumo_energia");
